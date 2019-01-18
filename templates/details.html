@@ -4,7 +4,12 @@
 
 	 <h3>{{ movie.title }}</h3>
 
-	 <img src="{{ image_url }}{{ movie.poster_path }}">
+	{% if movie.poster_path == None %}
+		<img src="/static/tmdb_logo.png" width="150" height="150" alt="The Movie Database tmdb_logo">
+	{% else %}
+		<img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }} poster" alt="{{ movie.title }} poster">
+	{% endif %}
+
 	 {{ movie.release_date }}
 	 {{ movie.runtime }}
 	 {{ movie.genres }}

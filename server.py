@@ -24,11 +24,35 @@ MOVIE_DB_APYKEY = "?api_key=d2081d54357f3eb6f9788eb96e93e156"
 # for response data
 payload = "{}"
 
+# movie database base url
+tmdb_url = "https://api.themoviedb.org/3/"
+
+# for images: url + size + image filepath
+img_base_url = "https://image.tmdb.org/t/p/"
+
+# sizes for images
+sm_img = "w92"
+# maybe use "w154", "w342", "w500", w780", "original"
+lg_img = "w185"
+
 @app.route('/')
 def index():
-    """Home page"""
+    """ Home page
+        Lists out popular movies with image
+    """
+    image_url = img_base_url + sm_img
+    request_url = tmdb_url + "movie/popular" + MOVIE_DB_APYKEY
+    
+    movies = requests.request("GET", request_url, data=payload).json()
 
-    return "Movie Discovery App"
+    return render_template("home.html", movies=movies["results"], image_url=image_url)
+
+@app.route('/details')
+def get_details():
+    """ Details page
+        Details and info of individual movie
+    """
+    return
 
 
 #################################################################

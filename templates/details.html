@@ -1,19 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<!-- TODO: Details of movie
 
-		title
-		release_date
-		runtime
-		poster_path
-		backdrop_path
-		imdb_id
-		tagline
-		overview
-		genres[]
+	 <h3>{{ movie.title }}</h3>
 
-
-	 -->
+	 <img src="{{ image_url }}{{ movie.poster_path }}">
+	 {{ movie.release_date }}
+	 {{ movie.runtime }}
+	 {{ movie.genres }}
+	 <a href="https://www.imdb.com/title/{{ movie.imdb_id }}">IMDB Link</a>
+	 {{ movie.tagline }}
+	 Overview: {{ movie.overview }}
 
 {% endblock %}

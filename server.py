@@ -32,7 +32,6 @@ img_base_url = "https://image.tmdb.org/t/p/"
 
 # sizes for images
 sm_img = "w92"
-# maybe use "w154", "w342", "w500", w780", "original"
 lg_img = "w185"
 
 @app.route('/')
@@ -47,12 +46,17 @@ def index():
 
     return render_template("home.html", movies=movies["results"], image_url=image_url)
 
-@app.route('/details')
-def get_details():
+@app.route('/details/<movie_id>', methods=['GET'])
+def get_details(movie_id):
     """ Details page
         Details and info of individual movie
     """
-    return
+    image_url = img_base_url + lg_img
+    request_url = tmdb_url + "movie/" + movie_id + MOVIE_DB_APYKEY
+
+    movie = requests.request("GET", request_url, data=payload).json()
+
+    return render_template("details.html", movie=movie, image_url=image_url)
 
 
 #################################################################

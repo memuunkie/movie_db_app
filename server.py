@@ -58,21 +58,19 @@ def get_details(movie_id):
 
     return render_template("details.html", movie=movie, image_url=image_url)
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET'])
 def search():
     """ Search
         Querys against TMDB data
     """
     query = "&query=" + request.args.get('searchTerms')
 
-    #image_url = img_base_url + sm_img
+    image_url = img_base_url + sm_img
     request_url = tmdb_url + "search/movie" + MOVIE_DB_APYKEY + query
 
-    #movies = requests.request("GET", request_url, data=payload).json()
+    movies = requests.request("GET", request_url, data=payload).json()
 
-    print(request_url)
-
-    return (render_template("base.html"))
+    return render_template("search.html", movies=movies["results"], image_url=image_url)
 
 #################################################################
 if __name__ == "__main__":

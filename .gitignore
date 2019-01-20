@@ -19,3 +19,5 @@ instance/
 
 # pyenv
 .python-version
+
+set_env_vars.sh

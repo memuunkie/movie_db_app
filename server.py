@@ -1,10 +1,14 @@
-# server.py - Server file to bvla labvla bla
+# server.py - Server file for movie discovery app
 #
 # Description:
 # ------------
+# Provides server-side functionality for index, get_details, and search routes.
+# Returns list of popular movies ('/'), details on individual movies ('/details/<movie_id>'),
+# and searchs for movies in TMDB ('search')
 #
 # Todo: 
 # -----
+# - Tests
 #
 # Changelog:
 # ----------

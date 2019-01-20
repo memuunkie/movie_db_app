@@ -18,8 +18,7 @@ app.config['SECRET_KEY']= "ABCItseasyas123orsimpleasDo-Re-MiABC123babyyouandmegi
 
 app.jinja_env.undefined = StrictUndefined
 
-# TODO: put into environment variable
-MOVIE_DB_APYKEY = "?api_key=d2081d54357f3eb6f9788eb96e93e156"
+MOVIE_DB_APIKEY = "?api_key=" + os.environ['MOVIE_DB_APIKEY']
 
 # for response data
 payload = "{}"
@@ -40,7 +39,7 @@ def index():
         Lists out popular movies with image
     """
     image_url = img_base_url + sm_img
-    request_url = tmdb_url + "movie/popular" + MOVIE_DB_APYKEY
+    request_url = tmdb_url + "movie/popular" + MOVIE_DB_APIKEY
     
     movies = requests.request("GET", request_url, data=payload).json()
 
@@ -52,7 +51,7 @@ def get_details(movie_id):
         Details and info of individual movie
     """
     image_url = img_base_url + lg_img
-    request_url = tmdb_url + "movie/" + movie_id + MOVIE_DB_APYKEY
+    request_url = tmdb_url + "movie/" + movie_id + MOVIE_DB_APIKEY
 
     movie = requests.request("GET", request_url, data=payload).json()
 
@@ -66,7 +65,7 @@ def search():
     query = "&query=" + request.args.get('searchTerms')
 
     image_url = img_base_url + sm_img
-    request_url = tmdb_url + "search/movie" + MOVIE_DB_APYKEY + query
+    request_url = tmdb_url + "search/movie" + MOVIE_DB_APIKEY + query
 
     movies = requests.request("GET", request_url, data=payload).json()
 
@@ -78,11 +77,9 @@ if __name__ == "__main__":
     # point that we invoke the DebugToolbarExtension
     app.debug = True
     app.jinja_env.auto_reload = app.debug  # make sure templates, etc. are not cached in debug mode
-    # add formatDatetime to Jinja template
-    #app.jinja_env.filters['formatDatetime'] = formatDatetime
 
     # Use the DebugToolbar
     DebugToolbarExtension(app)
 
 
-app.run(port=5000, host='0.0.0.0')
+app.run(port=5000, host='0.0.0.0')  

@@ -78,6 +78,9 @@ def search():
     """ Search
         Querys against TMDB data
     """
+    if request.args.get('searchTerms') == "":
+        return redirect("/")
+
     query = "&query=" + request.args.get('searchTerms')
 
     image_url = img_base_url + sm_img

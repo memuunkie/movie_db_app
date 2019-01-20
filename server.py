@@ -33,6 +33,7 @@ app.config['SECRET_KEY']= "ABCItseasyas123orsimpleasDo-Re-MiABC123babyyouandmegi
 
 app.jinja_env.undefined = StrictUndefined
 
+# get API key from environment
 MOVIE_DB_APIKEY = "?api_key=" + os.environ['MOVIE_DB_APIKEY']
 
 # for response data, per TMDB docs

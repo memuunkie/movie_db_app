@@ -1,6 +1,17 @@
+# server.py - Server file to bvla labvla bla
+#
+# Description:
+# ------------
+#
+# Todo: 
+# -----
+#
+# Changelog:
+# ----------
+# 01a, 2019-01-19, MAL - First functional commit
+
 from jinja2 import StrictUndefined
 
-from flask import jsonify
 from flask import (Flask, render_template, redirect, request, flash, session, url_for)
 
 from flask_debugtoolbar import DebugToolbarExtension
@@ -20,7 +31,7 @@ app.jinja_env.undefined = StrictUndefined
 
 MOVIE_DB_APIKEY = "?api_key=" + os.environ['MOVIE_DB_APIKEY']
 
-# for response data
+# for response data, per TMDB docs
 payload = "{}"
 
 # movie database base url

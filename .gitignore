@@ -21,3 +21,8 @@ instance/
 .python-version
 
 set_env_vars.sh
+
+bin/
+lib/
+pyvenv.cfg
+share/

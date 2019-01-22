@@ -2,6 +2,24 @@
 
 {% block content %}
 
+	<section class="jumbotron text-center">
+		<div class="container">
+			<a href="/"><h1 style="font-size: 36px">Movie Discovery App</h1></a>
+			<p>Search for a movie</p>
+			<!-- Search form -->
+			<form class="form-inline" action="{{ url_for('search') }}" methods="GET">
+				<div class="form-group">
+					<input class="form-control" type="search" name="searchTerms" placeholder="Search" aria-label="Search">
+					<span class="input-group-btn">
+						<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+					</span>
+				</div>
+			</form>
+
+		</div>
+
+	</section>
+
 	<h3>Popular Movies</h3>
 
 	<div>

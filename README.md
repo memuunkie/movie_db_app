@@ -1,4 +1,4 @@
-#Movie Directory App
+# Movie Directory App
 
 A web app that does searches of movies.
 
@@ -16,22 +16,28 @@ The server file is set to retrieve the API from an environment variable. To stor
 export MOVIE_DB_APIKEY='<your API key here>'
 ```
 
-You can also set the API key inside the ```server.py``` file by updating ```os.environ['MOVIE_DB_APIKEY']```.
+You can also set the API key inside the ```server.py``` file by replacing ```os.environ['MOVIE_DB_APIKEY']``` with your API key.
 
+### Installation
 
 *Recommend using virtualenv when developing.*
 
 ```
-$ python3 -m venv movie_dir_app/
+$ pip3 install virtualenv
+$ git clone https://github.com/memuunkie/movie_db_app.git
+$ python3 -m venv movie_db_app/
+$ cd movie_db_app/
+$ virtualenv env
 $ source env/bin/activate
+$ deactivate [to leave virtualenv]
 ```
 
-### Installation
+If you have virtualenv already installed, you can ignore the ```pip install```.
 
 Install requirements to your environment.
 
 ```
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 
 ### Debug Mode

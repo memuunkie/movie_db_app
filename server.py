@@ -4,15 +4,17 @@
 # ------------
 # Provides server-side functionality for index, get_details, and search routes.
 # Returns list of popular movies ('/'), details on individual movies ('/details/<movie_id>'),
-# and searchs for movies in TMDB ('search')
+# and searchs for movies in TMDB ('search').
 #
 # Todo: 
 # -----
 # - Tests
+# - Caching
 #
 # Changelog:
 # ----------
-# 01a, 2019-01-19, MAL - First functional commit
+# dd491a9d1, 2019-01-19, MAL - First functional commit
+# 1e8c60f1e, 2019-01-26, MAL - Movie details include links to recommended movies and search movies based on genre
 
 from jinja2 import StrictUndefined
 

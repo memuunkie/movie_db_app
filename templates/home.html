@@ -2,25 +2,32 @@
 
 {% block content %}
 
+	<!-- The BIG Header -->
 	<section class="jumbotron text-center">
 		<div class="container">
 			<a href="/"><h1 style="font-size: 36px">Movie Discovery App</h1></a>
 		</div>
-
 	</section>
 
+	
 	<div class="container text-center">
 		<h3 class="text-center">Popular Movies</h3>
+
+		<!-- For the movie list -->
 		<div class="row">
 
+			<!-- begin Jinja for movie cards -->
 			{% for movie in movies %}
 			<div class="col-sm-2">
 				<div class="card">
+
+					<!-- if there is no image available, use The Movie Database logo -->
 					{% if movie.poster_path == None %}
 						<a href="{{ url_for('get_details', movie_id=movie.id)}}"><img src="/static/tmdb_logo.png" class="card-img-top img-responsive" alt="The Movie Database tmdb_logo"></a>
 					{% else %}
 						<a href="{{ url_for('get_details', movie_id=movie.id)}}"><img src="{{ image_url }}{{ movie.poster_path }}" class="card-img-top img-responsive" alt="{{ movie.title }} poster"></a>
 					{% endif %}
+
 					<div class="card-body">
 						<div class="card-text">
 							<a href="{{ url_for('get_details', movie_id=movie.id)}}"><h6>{{ movie.title }}</h6></a>
@@ -29,10 +36,12 @@
 				</div>
 			</div>
 			{% endfor %}
+			<!-- end Jinja for movie cards -->
 
 		</div>
-		
+		<!-- end movie list section -->
 	</div>
+
 
 
 {% endblock %}

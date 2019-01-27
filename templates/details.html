@@ -3,14 +3,21 @@
 {% block content %}
 <div class="container-fluid">
 	<div class="row content">
+
+		<!-- SIDEBAR NAV -->
 		<div class="col-sm-2 sidenav">
 			<ul class="nav nav-pills nav-stacked">
 				<li><a href="/">Home</a></li>				
 			</ul>
 		</div>
 
+		<!--  for movie details section -->
 		<div class="col-sm-10">
+
+			<!-- begin Jinja for details -->
 			<h2 class="font-weight-bold" style="padding-top: 25px; padding-bottom: 10px">{{ movie.title }}</h2>
+
+			<!-- if there is no image available, use The Movie Database logo -->
 			{% if movie.poster_path == None %}
 				<img src="/static/tmdb_logo.png" class="img-responsive" style="padding-bottom: 25px" width="150" height="150" alt="The Movie Database tmdb_logo">
 			{% else %}
@@ -19,6 +26,8 @@
 
 			<p><span class="font-weight-bold">Release Date:</span> {{ movie.release_date }}</p>
 			<p><span class="font-weight-bold">Runtime:</span> {{ movie.runtime }} mins</p>
+
+			<!-- formats genres for commas and links -->
 			<p><span class="font-weight-bold">Genres:</span>
 				{% if movie.genres|length > 0 %}
 					{% for x in range(movie.genres|length)%}
@@ -32,20 +41,22 @@
 					Not available
 				{% endif %}
 			</p>
-			<p><p><span class="font-weight-bold">IMDB Link:</span><a href="https://www.imdb.com/title/{{ movie.imdb_id }}"> https://www.imdb.com/title/{{ movie.imdb_id }}</a></p>
+
+			<p><span class="font-weight-bold">IMDB Link:</span><a href="https://www.imdb.com/title/{{ movie.imdb_id }}"> https://www.imdb.com/title/{{ movie.imdb_id }}</a></p>
 			<p><span class="font-weight-bold">Tagline:</span> <span class="font-italic">{{ movie.tagline }}</span></p>
 			<h3 class="font-weight-bold">Overview:</h3>
 				<p>{{ movie.overview }}</p>
 
 			<h4 class="font-weight-bold">Recommended Movies:</h4>
-
 			<ul>
 				{% for rec in recs %}
 					<li><a href="{{ url_for('get_details', movie_id=rec.id)}}">{{ rec.title }}</a></li>
 				{% endfor%}
 			</ul>
+			<!-- end Jinja for details-->
 
 		</div>
+		<!-- end movie details section -->
 
 	</div>
 </div>

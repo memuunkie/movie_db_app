@@ -16,6 +16,7 @@
 
 				<table class="table">
 					<tbody>
+						<!-- begin Jinja for search results -->
 						{% for movie in movies %}
 						<tr>
 							<!-- if there is no image available, use The Movie Database logo -->
@@ -28,6 +29,7 @@
 							<td> <a href="{{ url_for('get_details', movie_id=movie.id)}}"> {{ movie.title }} </a></td>
 						</tr>
 						{% endfor %}
+						<!-- end Jinja for search results -->
 					</tbody>
 				</table>
 

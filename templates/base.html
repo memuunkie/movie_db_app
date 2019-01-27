@@ -4,33 +4,32 @@
 	<head>
 		<title>Movie Database App</title>
 
+		<!-- Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+		<!-- custom CSS -->
 		<link rel="stylesheet" type="text/css" href="/static/styles.css">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
+
 	</head>
 
 	<body>
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-dark bg-dark justify-content-between">
-		    
 		    <a class="navbar-brand" href="/">Movie Discovery App</a>
-		    
+		    <!-- SEARCH BAR -->
 		    <form class="form-inline" action="{{ url_for('search') }}" methods="GET">
-
 		    	<input class="form-control mr-sm-2" type="search" name="searchTerms" placeholder="Search" aria-label="Search">
-		    	<!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
 		    	<button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i>
-		    
 		    </form>
 		</nav>
 
 		{% block content %} ALL THE THINGS GO HERE {% endblock %}
 
+		<!-- For the Bootstrap -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
 	</body>
 
 	

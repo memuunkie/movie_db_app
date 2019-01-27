@@ -1,17 +1,15 @@
-/* Style the submit button */
 
-button {
-  float: left;
-  width: 20%;
-  padding: 10px;
-  background: #2196F3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none; /* Prevent double borders */
-  cursor: pointer;
+.row.content {
+  height: 1500px; /*set height so sidenav can be 100%*/
 }
 
-button:hover {
-  background: #0b7dda;
+.sidenav {
+  background-color: #f1f1f1;
+  height: 100%;
+  padding: 15px;
+}
+
+.card-body {
+  background-color: #f2f2f2;
+  padding: 25px;
 }

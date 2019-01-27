@@ -69,9 +69,11 @@ def get_details(movie_id):
     image_url = img_base_url + lg_img
     request_url = tmdb_url + "movie/" + movie_id + MOVIE_DB_APIKEY
 
+    recs = get_recs(movie_id)
+
     movie = requests.request("GET", request_url, data=payload).json()
 
-    return render_template("details.html", movie=movie, image_url=image_url)
+    return render_template("details.html", movie=movie, image_url=image_url, recs=recs['results'])
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -89,6 +91,19 @@ def search():
     movies = requests.request("GET", request_url, data=payload).json()
 
     return render_template("search.html", movies=movies["results"], image_url=image_url)
+
+#################################################################
+
+# HELPER FUNCTIONS
+
+def get_recs(movie_id):
+    """ Get list of recommended movies
+    """
+    request_url = tmdb_url + "movie/" + str(movie_id) + "/recommendations" + MOVIE_DB_APIKEY
+
+    recs = requests.request("GET", request_url, data=payload).json()
+
+    return recs
 
 #################################################################
 if __name__ == "__main__":

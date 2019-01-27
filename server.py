@@ -75,7 +75,7 @@ def get_details(movie_id):
 
     movie = requests.request("GET", request_url, data=payload).json()
 
-    return render_template("details.html", movie=movie, image_url=image_url, recs=recs['results'])
+    return render_template("details.html", movie=movie, image_url=image_url, recs=recs)
 
 @app.route('/search', methods=['GET'])
 def search():
@@ -115,7 +115,7 @@ def get_recs(movie_id):
 
     recs = requests.request("GET", request_url, data=payload).json()
 
-    return recs
+    return recs['results']
 
 #################################################################
 if __name__ == "__main__":

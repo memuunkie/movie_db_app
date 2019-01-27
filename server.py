@@ -77,8 +77,7 @@ def get_details(movie_id):
 
 @app.route('/search', methods=['GET'])
 def search():
-    """ Search
-        Querys against TMDB data
+    """ Search using keywords
     """
     if request.args.get('searchTerms') == "":
         return redirect("/")
@@ -92,6 +91,17 @@ def search():
 
     return render_template("search.html", movies=movies["results"], image_url=image_url)
 
+@app.route('/discover/<genre_id>', methods=['GET'])
+def discover(genre_id):
+    """ Search for movies based on genre
+    """
+    image_url = img_base_url + sm_img
+    request_url = tmdb_url + "discover/movie" + MOVIE_DB_APIKEY + "&with_genres=" + genre_id
+
+    movies = movies = requests.request("GET", request_url, data=payload).json()
+
+    return render_template("search.html", movies=movies["results"], image_url=image_url)
+
 #################################################################
 
 # HELPER FUNCTIONS
@@ -99,7 +109,7 @@ def search():
 def get_recs(movie_id):
     """ Get list of recommended movies
     """
-    request_url = tmdb_url + "movie/" + str(movie_id) + "/recommendations" + MOVIE_DB_APIKEY
+    request_url = tmdb_url + "movie/" + movie_id + "/recommendations" + MOVIE_DB_APIKEY
 
     recs = requests.request("GET", request_url, data=payload).json()
 

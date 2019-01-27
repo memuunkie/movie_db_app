@@ -46,7 +46,7 @@ tmdb_url = "https://api.themoviedb.org/3/"
 img_base_url = "https://image.tmdb.org/t/p/"
 
 # sizes for images
-sm_img = "w92"
+sm_img = "w154"
 lg_img = "w185"
 
 @app.route('/')

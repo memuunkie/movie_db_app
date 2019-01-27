@@ -1,20 +1,53 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container-fluid">
+	<div class="row content">
+		<div class="col-sm-2 sidenav">
+			<ul class="nav nav-pills nav-stacked">
+				<li><a href="/">Home</a></li>				
+			</ul>
+		</div>
 
-	 <h3>{{ movie.title }}</h3>
+		<div class="col-sm-10">
+			<h2 class="font-weight-bold" style="padding-top: 25px; padding-bottom: 10px">{{ movie.title }}</h2>
+			{% if movie.poster_path == None %}
+				<img src="/static/tmdb_logo.png" class="img-responsive" style="padding-bottom: 25px" width="150" height="150" alt="The Movie Database tmdb_logo">
+			{% else %}
+				<img src="{{ image_url }}{{ movie.poster_path }}" class="img-responsive" style="padding-bottom: 25px" alt="{{ movie.title }} poster">
+			{% endif %}
 
-	{% if movie.poster_path == None %}
-		<img src="/static/tmdb_logo.png" width="150" height="150" alt="The Movie Database tmdb_logo">
-	{% else %}
-		<img src="{{ image_url }}{{ movie.poster_path }}" alt="{{ movie.title }} poster" alt="{{ movie.title }} poster">
-	{% endif %}
+			<p><span class="font-weight-bold">Release Date:</span> {{ movie.release_date }}</p>
+			<p><span class="font-weight-bold">Runtime:</span> {{ movie.runtime }} mins</p>
+			<p><span class="font-weight-bold">Genres:</span>
+				{% if movie.genres|length > 0 %}
+					{% for x in range(movie.genres|length)%}
+						{% if x == movie.genres|length - 1 %}
+							{{ movie.genres[x].name }}
+						{% else %}
+							{{ movie.genres[x].name}}, 
+						{% endif%}
+					{% endfor %}
+				{% else %}
+					Not available
+				{% endif %}
+			</p>
+			<p><p><span class="font-weight-bold">IMDB Link:</span><a href="https://www.imdb.com/title/{{ movie.imdb_id }}"> https://www.imdb.com/title/{{ movie.imdb_id }}</a></p>
+			<p><span class="font-weight-bold">Tagline:</span> <span class="font-italic">{{ movie.tagline }}</span></p>
+			<h3 class="font-weight-bold">Overview:</h3>
+				<p>{{ movie.overview }}</p>
 
-	 {{ movie.release_date }}
-	 {{ movie.runtime }}
-	 {{ movie.genres }}
-	 <a href="https://www.imdb.com/title/{{ movie.imdb_id }}">IMDB Link</a>
-	 {{ movie.tagline }}
-	 Overview: {{ movie.overview }}
+			<h4 class="font-weight-bold">Recommended Movies:</h4>
+
+			<ul>
+				{% for rec in recs %}
+					<li><a href="{{ url_for('get_details', movie_id=rec.id)}}">{{ rec.title }}</a></li>
+				{% endfor%}
+			</ul>
+
+		</div>
+
+	</div>
+</div>
 
 {% endblock %}

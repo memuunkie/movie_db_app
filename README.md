@@ -6,14 +6,14 @@ Uses [The Movie Database API](https://developers.themoviedb.org/3/getting-starte
 
 ## Prerequisities
 
-This app is built using [Python 3](https://www.python.org/), [Flask](http://flask.pocoo.org/), and [Jinja](http://jinja.pocoo.org/) (as of 1/2019).
+This app is built using [Python 3](https://www.python.org/), [Flask](http://flask.pocoo.org/), and [Jinja](http://jinja.pocoo.org/) (as of 1/2019). Recommend installing Python3 and [pip](https://pip.pypa.io/en/stable/installing/) beforehand.
 
 Requires an API key from [The Movie Database API](https://developers.themoviedb.org/3/getting-started). Sign up is free but they do ask for more contact information than seems necessary.
 
 The server file is set to retrieve the API from an environment variable. To store the key in your environment:
 
 ```
-export MOVIE_DB_APIKEY='<your API key here>'
+$ export MOVIE_DB_APIKEY='<your API key here>'
 ```
 
 You can also set the API key inside the ```server.py``` file by replacing ```os.environ['MOVIE_DB_APIKEY']``` with your API key.

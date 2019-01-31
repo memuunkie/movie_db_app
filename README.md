@@ -20,19 +20,15 @@ You can also set the API key inside the ```server.py``` file by replacing ```os.
 
 ### Installation
 
-*Recommend using virtualenv when developing.*
+*Recommend using [venv](https://docs.python.org/3/library/venv.html) module to create virtual environment when developing.*
 
 ```
-$ pip3 install virtualenv
 $ git clone https://github.com/memuunkie/movie_db_app.git
-$ python3 -m venv movie_db_app/
 $ cd movie_db_app/
-$ virtualenv env
+$ python3 -m venv env
 $ source env/bin/activate
 $ deactivate [to leave virtualenv]
 ```
-
-If you have virtualenv already installed, you can ignore the ```pip install```.
 
 Install requirements to your environment.
 
